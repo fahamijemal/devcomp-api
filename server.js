@@ -5,7 +5,10 @@ const colors = require('colors');
 const morgan = require('morgan');
 const errorHandler = require('./middleware/error');
 const bootcamps = require('./routes/bootcamps'); //route files
-dotenv.config({ path: './config/config.env' }); //load env vars
+const courses = require('./routes/courses'); //route files
+
+//Load env vars
+dotenv.config({ path: './config/config.env' }); 
 
 
 //body parser
@@ -23,6 +26,7 @@ if(process.env.NODE_ENV === 'development') {
     app.use(morgan('dev'));
 }
 app.use('/api/v1/bootcamps', bootcamps);
+app.use('/api/v1/courses', courses);
 
 const PORT = process.env.PORT || 5000;
 
